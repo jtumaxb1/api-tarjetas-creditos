@@ -1,0 +1,38 @@
+[
+	{
+		"tipoNotificacion": "Notificacion 1",
+		"numeroTarjeta": "6534",
+		"mensaje": "Mensaje de prueba",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"tipoNotificacion": "Notificacion 2",
+		"numeroTarjeta": "6534",
+		"mensaje": "Mensaje de prueba",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"tipoNotificacion": "Notificacion 3",
+		"numeroTarjeta": "6534",
+		"mensaje": "Mensaje de prueba",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"tipoNotificacion": "Notificacion 4",
+		"numeroTarjeta": "6534",
+		"mensaje": "Mensaje de prueba",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"tipoNotificacion": "Notificacion 5",
+		"numeroTarjeta": "6534",
+		"mensaje": "Mensaje de prueba",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"tipoNotificacion": "Notificacion 6",
+		"numeroTarjeta": "6534",
+		"mensaje": "Mensaje de prueba",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	}
+]

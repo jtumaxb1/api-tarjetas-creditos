@@ -1,0 +1,47 @@
+[
+	{
+		"nombre": "Juan Alberto",
+		"numeroTarjeta": "3213 3434 6534",
+		"fechaVencimiento": "2025-05-12",
+		"codigoVencimiento": 323,
+		"saldo": 324.52,
+		"pin": 321,
+		"limiteCredito": 8000
+	},
+	{
+		"nombre": "Juan Alberto",
+		"numeroTarjeta": "3213 3434 7657",
+		"fechaVencimiento": "2025-05-12",
+		"codigoVencimiento": 323,
+		"saldo": 324.52,
+		"pin": 321,
+		"limiteCredito": 8000
+	},
+	{
+		"nombre": "Juan Alberto",
+		"numeroTarjeta": "3213 3434 0291",
+		"fechaVencimiento": "2025-05-12",
+		"codigoVencimiento": 323,
+		"saldo": 324.52,
+		"pin": 321,
+		"limiteCredito": 8000
+	},
+	{
+		"nombre": "Juan Alberto",
+		"numeroTarjeta": "3213 3434 0964",
+		"fechaVencimiento": "2025-05-12",
+		"codigoVencimiento": 323,
+		"saldo": 324.52,
+		"pin": 321,
+		"limiteCredito": 8000
+	},
+	{
+		"nombre": "Juan Alberto",
+		"numeroTarjeta": "3213 3434 9705",
+		"fechaVencimiento": "2025-05-12",
+		"codigoVencimiento": 323,
+		"saldo": 324.52,
+		"pin": 321,
+		"limiteCredito": 8000
+	}
+]

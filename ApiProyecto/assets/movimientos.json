@@ -1,0 +1,45 @@
+[
+	[
+		{
+			"nombreMovimiento": "Movimiento 1",
+			"numeroTarjeta": "6534",
+			"fechaMovimiento": "2025-05-12",
+			"montoTotal": 323,
+			"nombre": "Josue Fernando Tumax Baquiax"
+		},
+		{
+			"nombreMovimiento": "Movimiento 2",
+			"numeroTarjeta": "6534",
+			"fechaMovimiento": "2025-05-12",
+			"montoTotal": 323,
+			"nombre": "Josue Fernando Tumax Baquiax"
+		},
+		{
+			"nombreMovimiento": "Movimiento 3",
+			"numeroTarjeta": "6534",
+			"fechaMovimiento": "2025-05-12",
+			"montoTotal": 323,
+			"nombre": "Josue Fernando Tumax Baquiax"
+		},
+		{
+			"nombreMovimiento": "Movimiento 4",
+			"numeroTarjeta": "6534",
+			"fechaMovimiento": "2025-05-12",
+			"montoTotal": 323,
+			"nombre": "Josue Fernando Tumax Baquiax"
+		},
+		{
+			"nombreMovimiento": "Movimiento 5",
+			"numeroTarjeta": "6534",
+			"fechaMovimiento": "2025-05-12",
+			"montoTotal": 323,
+			"nombre": "Josue Fernando Tumax Baquiax"
+		},
+		{
+			"nombreMovimiento": "Movimiento 6",
+			"numeroTarjeta": "6534",
+			"fechaMovimiento": "2025-05-12",
+			"montoTotal": 323,
+			"nombre": "Josue Fernando Tumax Baquiax"
+		}
+	]

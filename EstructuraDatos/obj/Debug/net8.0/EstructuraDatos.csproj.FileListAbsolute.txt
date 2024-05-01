@@ -1,0 +1,11 @@
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\bin\Debug\net8.0\EstructuraDatos.deps.json
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\bin\Debug\net8.0\EstructuraDatos.dll
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\bin\Debug\net8.0\EstructuraDatos.pdb
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\EstructuraDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\EstructuraDatos.AssemblyInfoInputs.cache
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\EstructuraDatos.AssemblyInfo.cs
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\EstructuraDatos.csproj.CoreCompileInputs.cache
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\EstructuraDatos.dll
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\refint\EstructuraDatos.dll
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\EstructuraDatos.pdb
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\EstructuraDatos\obj\Debug\net8.0\ref\EstructuraDatos.dll

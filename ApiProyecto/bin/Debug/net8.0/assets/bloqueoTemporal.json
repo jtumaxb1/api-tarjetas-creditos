@@ -1,0 +1,50 @@
+[
+	{
+		"id": 1,
+		"comentario": "Bloqueo 1",
+		"numeroTarjeta": "6534",
+		"fechaBloqueo": "30-04-2024",
+		"fechaDesbloqueo": "15-05-2024",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"id": 2,
+		"comentario": "Bloqueo 2",
+		"numeroTarjeta": "6534",
+		"fechaBloqueo": "30-04-2024",
+		"fechaDesbloqueo": "15-05-2024",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"id": 3,
+		"comentario": "Bloqueo 3",
+		"numeroTarjeta": "6534",
+		"fechaBloqueo": "30-04-2024",
+		"fechaDesbloqueo": "15-05-2024",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"id": 4,
+		"comentario": "Bloqueo 4",
+		"numeroTarjeta": "6534",
+		"fechaBloqueo": "30-04-2024",
+		"fechaDesbloqueo": "15-05-2024",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"id": 5,
+		"comentario": "Bloqueo 5",
+		"numeroTarjeta": "6534",
+		"fechaBloqueo": "30-04-2024",
+		"fechaDesbloqueo": "15-05-2024",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	},
+	{
+		"id": 6,
+		"comentario": "Bloqueo 6",
+		"numeroTarjeta": "6534",
+		"fechaBloqueo": "30-04-2024",
+		"fechaDesbloqueo": "15-05-2024",
+		"nombre": "Josue Fernando Tumax Baquiax"
+	}
+]
