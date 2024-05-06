@@ -66,6 +66,17 @@ namespace EstructuraDatos.Colas
 
         }
 
+        public List<Pago> recorrer()
+        {
+            NodoCola indice;
+            List<Pago> pagos = new List<Pago>();
+            for (indice = inicio; indice != null; indice = indice.siguiente)
+            {
+                pagos.Add((Pago)indice.elemento);
+            }
+
+            return pagos;
+        }
 
     }
 }

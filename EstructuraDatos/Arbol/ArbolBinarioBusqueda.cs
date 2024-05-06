@@ -48,6 +48,23 @@ namespace EstructuraDatos.Arbol
             }
         }
 
+        public List<EstadoCuenta> recorrerEstadoCuenta(Nodo r, List<EstadoCuenta> lista)
+        {
+            if (r != null)
+            {
+                lista.Add((EstadoCuenta)r.valorNodo());
+                if (r.subArbolIzdo() != null)
+                {
+                    recorrerEstadoCuenta(r.subArbolIzdo(), lista);
+                }
+                if (r.subArbolDcho() != null)
+                {
+                    recorrerEstadoCuenta(r.subArbolDcho(), lista);
+                }
+            }
+            return lista;
+        }
+
         public Object buscarEstadoCuenta(string dato)
         {
             if (raiz == null)

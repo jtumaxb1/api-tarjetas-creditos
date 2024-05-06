@@ -20,6 +20,144 @@
     ]
   },
   {
+    "ContainingType": "ApiProyecto.Controllers.TarjetaCreditoController",
+    "Method": "PostMovimiento",
+    "RelativePath": "TarjetaCredito/almacenarEstadoCuenta",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "estadoCuenta",
+        "Type": "EstructuraDatos.Clases.EstadoCuenta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiProyecto.Controllers.TarjetaCreditoController",
+    "Method": "PostPago",
+    "RelativePath": "TarjetaCredito/almacenarPago",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pago",
+        "Type": "EstructuraDatos.Clases.Pago",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiProyecto.Controllers.TarjetaCreditoController",
+    "Method": "Post",
+    "RelativePath": "TarjetaCredito/almacenarSaldo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "EstructuraDatos.Clases.TarjetaCredito",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiProyecto.Controllers.TarjetaCreditoController",
+    "Method": "GetObtenerEstadoCuenta",
+    "RelativePath": "TarjetaCredito/obtenerEstadoCuenta",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EstructuraDatos.Clases.EstadoCuenta, EstructuraDatos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiProyecto.Controllers.TarjetaCreditoController",
+    "Method": "GetObtenerPago",
+    "RelativePath": "TarjetaCredito/obtenerPago",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EstructuraDatos.Clases.Pago, EstructuraDatos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ApiProyecto.Controllers.TarjetaCreditoController",
+    "Method": "GetObtenerSaldo",
+    "RelativePath": "TarjetaCredito/obtenerSaldo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[EstructuraDatos.Clases.TarjetaCredito, EstructuraDatos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ApiProyecto.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

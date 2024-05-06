@@ -1,25 +1,29 @@
 ﻿using EstructuraDatos.Arbol;
 using EstructuraDatos.Clases;
 using EstructuraDatos.Colas;
+using EstructuraDatos.interfaces;
 using EstructuraDatos.Listas;
 using EstructuraDatos.Pilas;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 
 namespace ApiProyecto.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class TarjetaCreditoController : Controller
     {
 
-        ListaTarjetaCredito listaTarjetasCredito = new ListaTarjetaCredito();
-        Pila pilaLimiteCredito = new Pila();
-        Pila pilaMovimiento = new Pila();
-        Cola colaPagos = new Cola();
-        Cola colaNotificaciones = new Cola();
-        ArbolBinarioBusqueda arbolEstadoCuentas = new ArbolBinarioBusqueda();
-        ArbolBinarioBusqueda arbolBloqueEstado = new ArbolBinarioBusqueda();
+        private readonly ILogger<TarjetaCreditoController> logger;
+        private readonly InterfaceProyecto interfaceProyecto;
+
+        public TarjetaCreditoController(ILogger<TarjetaCreditoController> logger, InterfaceProyecto interfaceProyecto)
+        {
+            this.logger = logger;
+            this.interfaceProyecto = interfaceProyecto;
+        }
 
         [HttpGet(Name = "tarjetaCredito")]
 
@@ -64,29 +68,28 @@ namespace ApiProyecto.Controllers
                 }
                 foreach (var tarjeta in tarjetas)
                 {
-                    listaTarjetasCredito.insertarCabezaLista(tarjeta);
-                    colaPagos.insertar(tarjeta);
-                    pilaLimiteCredito.insertar(tarjeta);
+                    interfaceProyecto.listaTarjetasCredito.insertarCabezaLista(tarjeta);
+                    interfaceProyecto.pilaLimiteCredito.insertar(tarjeta);
                 }
 
                 foreach(var estadoCuenta in estadosCuentas)
                 {
-                    arbolEstadoCuentas.insertar(estadoCuenta);
+                    interfaceProyecto.arbolEstadoCuentas.insertar(estadoCuenta);
                 }
 
                 foreach(var movimiento in movimientos)
                 {
-                    pilaMovimiento.insertar(movimiento);
+                    interfaceProyecto.pilaMovimiento.insertar(movimiento);
                 }
 
                 foreach(var notificacion in notificaciones)
                 {
-                    colaNotificaciones.insertar(notificacion);
+                    interfaceProyecto.colaNotificaciones.insertar(notificacion);
                 }
 
                 foreach(var bloqueo in bloqueosTemporales)
                 {
-                    arbolBloqueEstado.insertar(bloqueo);
+                    interfaceProyecto.arbolBloqueEstado.insertar(bloqueo);
                 }
 
                 return "Informacion cargada";
@@ -96,5 +99,52 @@ namespace ApiProyecto.Controllers
             }
         }
 
+        [HttpPost("almacenarSaldo")]
+        public string Post(TarjetaCredito body)
+        {
+            interfaceProyecto.listaTarjetasCredito.insertarCabezaLista(body);
+            return "Nuevo saldo almacenado";
+        }
+
+        [HttpGet("obtenerSaldo")]
+        public List<TarjetaCredito> GetObtenerSaldo()
+        {
+            List<TarjetaCredito> tarjetas = interfaceProyecto.listaTarjetasCredito.recorrer();
+            return tarjetas;
+        }
+
+        [HttpPost("almacenarPago")]
+        public string PostPago(Pago pago)
+        {
+            interfaceProyecto.colaPagos.insertar(pago);
+            interfaceProyecto.listaTarjetasCredito.buscarActualizarSaldoLista(pago, pago.montoFinal);
+            return "Pago encolado";
+        }
+
+        [HttpGet("obtenerPago")]
+        public List<Pago> GetObtenerPago()
+        {
+            List<Pago> pagos = interfaceProyecto.colaPagos.recorrer();
+            return pagos;
+        }
+
+        [HttpPost("almacenarEstadoCuenta")]
+        public string PostMovimiento(EstadoCuenta estadoCuenta)
+        {
+            EstadoCuenta newEstado = estadoCuenta;
+            Random rnd = new Random();
+            newEstado.id = rnd.Next();
+            interfaceProyecto.arbolEstadoCuentas.insertar(estadoCuenta);
+            return "Estado de cuenta almacenado";
+        }
+
+        [HttpGet("obtenerEstadoCuenta")]
+        public List<EstadoCuenta> GetObtenerEstadoCuenta()
+        {
+            return interfaceProyecto.arbolEstadoCuentas.recorrerEstadoCuenta(interfaceProyecto.arbolEstadoCuentas.raizArbol(), new List<EstadoCuenta>());
+        }
+
+
     }
 }
+ 

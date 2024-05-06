@@ -38,3 +38,4 @@ C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\Api
 C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\ApiProyecto\bin\Debug\net8.0\assets\movimientos.json
 C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\ApiProyecto\bin\Debug\net8.0\assets\notificaciones.json
 C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\ApiProyecto\bin\Debug\net8.0\assets\tarjetasCreditos.json
+C:\Users\ferna\OneDrive\Documents\Universidad\Quinto Semestre\Programacion 3\ApiProyecto\ApiProyecto\obj\Debug\net8.0\ApiProyecto.sourcelink.json

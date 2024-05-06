@@ -16,7 +16,7 @@ namespace EstructuraDatos.Listas
             primero = null;
         }
 
-        public void insertarCabezaLista(TarjetaCredito dato)
+        public void insertarCabezaLista(Object dato)
         {
             NodoListaTarjetaCredito nuevo;
             nuevo = new NodoListaTarjetaCredito(dato);
@@ -24,7 +24,7 @@ namespace EstructuraDatos.Listas
             primero = nuevo;
         }
 
-        public ListaTarjetaCredito insertarUltimo(TarjetaCredito testigo, TarjetaCredito entrada)
+        public ListaTarjetaCredito insertarUltimo(Object testigo, Object entrada)
         {
             NodoListaTarjetaCredito nuevo, anterior;
             // anterior = buscarLista(testigo);
@@ -38,7 +38,7 @@ namespace EstructuraDatos.Listas
             return this;
         }
 
-        public ListaTarjetaCredito insertarLista(TarjetaCredito testigo, TarjetaCredito entrada)
+        public ListaTarjetaCredito insertarLista(Object testigo, Object entrada)
         {
             NodoListaTarjetaCredito nuevo, anterior;
             anterior = buscarLista(testigo);
@@ -51,7 +51,18 @@ namespace EstructuraDatos.Listas
             return this;
         }
 
-        public NodoListaTarjetaCredito buscarLista(TarjetaCredito destino) {
+        public List<TarjetaCredito> recorrer()
+        {
+            NodoListaTarjetaCredito indice;
+            List<TarjetaCredito> tarjetas = new List<TarjetaCredito>();
+            for (indice = primero; indice != null; indice = indice.enlance)
+            {
+                tarjetas.Add((TarjetaCredito)indice.dato);
+            }
+            return tarjetas;
+        }
+
+        public NodoListaTarjetaCredito buscarLista(Object destino) {
             NodoListaTarjetaCredito indice;
             for(indice = primero; indice != null; indice = indice.enlance)
             {
@@ -61,6 +72,22 @@ namespace EstructuraDatos.Listas
                 }
             }
             return null;
+        }
+
+        public void buscarActualizarSaldoLista(Object destino, decimal dato)
+        {
+            NodoListaTarjetaCredito indice;
+            for (indice = primero; indice != null; indice = indice.enlance)
+            {
+                Pago destinoPago = (Pago)destino;
+                TarjetaCredito tarjeta1 = (TarjetaCredito)indice.dato;
+                if (tarjeta1.numeroTarjeta == destinoPago.numeroTarjeta)
+                {
+                    TarjetaCredito tarjeta = (TarjetaCredito)indice.dato;
+                    tarjeta.saldo = tarjeta.saldo - dato;
+                    indice.dato = tarjeta;
+                }
+            }
         }
 
     }
