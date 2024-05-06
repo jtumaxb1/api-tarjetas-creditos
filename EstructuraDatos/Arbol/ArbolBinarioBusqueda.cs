@@ -65,6 +65,23 @@ namespace EstructuraDatos.Arbol
             return lista;
         }
 
+        public List<BloqueoTemporal> recorrerBloqueoTemporal(Nodo r, List<BloqueoTemporal> lista)
+        {
+            if (r != null)
+            {
+                lista.Add((BloqueoTemporal)r.valorNodo());
+                if (r.subArbolIzdo() != null)
+                {
+                    recorrerBloqueoTemporal(r.subArbolIzdo(), lista);
+                }
+                if (r.subArbolDcho() != null)
+                {
+                    recorrerBloqueoTemporal(r.subArbolDcho(), lista);
+                }
+            }
+            return lista;
+        }
+
         public Object buscarEstadoCuenta(string dato)
         {
             if (raiz == null)

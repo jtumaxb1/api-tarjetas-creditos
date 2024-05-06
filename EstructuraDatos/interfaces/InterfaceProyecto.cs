@@ -17,6 +17,7 @@ namespace EstructuraDatos.interfaces
         Pila pilaMovimiento { get; }
         Cola colaPagos { get; }
         Cola colaNotificaciones { get; }
+        ListaTarjetaCredito listaCambioPin { get; }
         ArbolBinarioBusqueda arbolEstadoCuentas { get; }
         ArbolBinarioBusqueda arbolBloqueEstado { get; }
     }

@@ -69,7 +69,6 @@ namespace ApiProyecto.Controllers
                 foreach (var tarjeta in tarjetas)
                 {
                     interfaceProyecto.listaTarjetasCredito.insertarCabezaLista(tarjeta);
-                    interfaceProyecto.pilaLimiteCredito.insertar(tarjeta);
                 }
 
                 foreach(var estadoCuenta in estadosCuentas)
@@ -124,12 +123,11 @@ namespace ApiProyecto.Controllers
         [HttpGet("obtenerPago")]
         public List<Pago> GetObtenerPago()
         {
-            List<Pago> pagos = interfaceProyecto.colaPagos.recorrer();
-            return pagos;
+            return interfaceProyecto.colaPagos.recorrerPagos();
         }
 
         [HttpPost("almacenarEstadoCuenta")]
-        public string PostMovimiento(EstadoCuenta estadoCuenta)
+        public string PostEstadoCuenta(EstadoCuenta estadoCuenta)
         {
             EstadoCuenta newEstado = estadoCuenta;
             Random rnd = new Random();
@@ -144,7 +142,75 @@ namespace ApiProyecto.Controllers
             return interfaceProyecto.arbolEstadoCuentas.recorrerEstadoCuenta(interfaceProyecto.arbolEstadoCuentas.raizArbol(), new List<EstadoCuenta>());
         }
 
+        [HttpPost("almacenarMovimiento")]
+        public string PostMovimiento(Movimiento movimiento)
+        {
+            interfaceProyecto.pilaMovimiento.insertar(movimiento);
+            return "Movimiento almacenado";
+        }
 
+        [HttpGet("obtenerMovimiento")]
+        public List<Movimiento> GetMovimientos()
+        {
+            return interfaceProyecto.pilaMovimiento.recorrer();
+        }
+
+        [HttpPost("almacenarNotificacion")]
+        public string PostNotificacion(Notificacion notificacion)
+        {
+            interfaceProyecto.colaNotificaciones.insertar(notificacion);
+            return "Notificacion almacenado";
+        }
+
+        [HttpGet("obtenerNotificacion")]
+        public List<Notificacion> GetNotificacion()
+        {
+            return interfaceProyecto.colaNotificaciones.recorrerNotificaciones();
+        }
+
+        [HttpPost("almacenarCambioPin")]
+        public string PostCambioPin(CambioPin cambioPin)
+        {
+            interfaceProyecto.listaCambioPin.insertarCabezaLista(cambioPin);
+            interfaceProyecto.listaTarjetasCredito.buscarActualizarPinLista(cambioPin, cambioPin.nuevoPin);
+            return "Cambio de pin procesado";
+        }
+
+        [HttpGet("obtenerCambioPin")]
+        public List<CambioPin> GetCambioPin()
+        {
+            return interfaceProyecto.listaCambioPin.recorrerPin();
+        }
+
+        [HttpPost("almacenarBloqueoTemporal")]
+        public string PostBloqueoTemporal(BloqueoTemporal bloqueo)
+        {
+            BloqueoTemporal newBloqueo = bloqueo;
+            Random rnd = new Random();
+            newBloqueo.id = rnd.Next();
+            interfaceProyecto.arbolBloqueEstado.insertar(newBloqueo);
+            return "Bloqueo Temporal almacenado";
+        }
+
+        [HttpGet("obtenerBloqueoTemporal")]
+        public List<BloqueoTemporal> GetBLoqueoTempora()
+        {
+            return interfaceProyecto.arbolBloqueEstado.recorrerBloqueoTemporal(interfaceProyecto.arbolBloqueEstado.raizArbol(), new List<BloqueoTemporal>());
+        }
+
+        [HttpPost("almacenarSolicitudAumentoLimiteCredito")]
+        public string PostSolicitudAumentoLimiteCredito(LimiteCredito limite)
+        {
+            interfaceProyecto.pilaLimiteCredito.insertar(limite);
+            interfaceProyecto.listaTarjetasCredito.buscarActualizarLimiteCreditoLista(limite, limite.limiteCredito);
+            return "Solicitud de aumento de limite de credito almacenada";
+        }
+
+        [HttpGet("obtenerLimiteCredito")]
+        public List<LimiteCredito> GetLimiteCredito()
+        {
+            return interfaceProyecto.pilaLimiteCredito.recorrerLimiteCredito();
+        }
     }
 }
  

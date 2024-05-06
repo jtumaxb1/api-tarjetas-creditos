@@ -23,6 +23,8 @@ namespace EstructuraDatos.Clases
 
         public Cola colaNotificaciones { get; } = new Cola();
 
+        public ListaTarjetaCredito listaCambioPin { get; } = new ListaTarjetaCredito();
+
         public ArbolBinarioBusqueda arbolEstadoCuentas { get; } = new ArbolBinarioBusqueda();
 
         public ArbolBinarioBusqueda arbolBloqueEstado { get; } = new ArbolBinarioBusqueda();
