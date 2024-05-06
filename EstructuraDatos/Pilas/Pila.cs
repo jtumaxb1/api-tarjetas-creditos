@@ -58,5 +58,27 @@ namespace EstructuraDatos.Pilas
             }
         }
 
+        public List<Movimiento> recorrer()
+        {
+            NodoPila indice;
+            List<Movimiento> movimientos = new List<Movimiento>();
+            for (indice = cima; indice != null; indice = indice.siguiente)
+            {
+                movimientos.Add((Movimiento)indice.elemento);
+            }
+            return movimientos;
+        }
+
+        public List<LimiteCredito> recorrerLimiteCredito()
+        {
+            NodoPila indice;
+            List<LimiteCredito> limites = new List<LimiteCredito>();
+            for (indice = cima; indice != null; indice = indice.siguiente)
+            {
+                limites.Add((LimiteCredito)indice.elemento);
+            }
+            return limites;
+        }
+
     }
 }
