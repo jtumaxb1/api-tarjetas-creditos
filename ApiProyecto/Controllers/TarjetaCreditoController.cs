@@ -1,25 +1,29 @@
 ﻿using EstructuraDatos.Arbol;
 using EstructuraDatos.Clases;
 using EstructuraDatos.Colas;
+using EstructuraDatos.interfaces;
 using EstructuraDatos.Listas;
 using EstructuraDatos.Pilas;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 
 namespace ApiProyecto.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class TarjetaCreditoController : Controller
     {
 
-        ListaTarjetaCredito listaTarjetasCredito = new ListaTarjetaCredito();
-        Pila pilaLimiteCredito = new Pila();
-        Pila pilaMovimiento = new Pila();
-        Cola colaPagos = new Cola();
-        Cola colaNotificaciones = new Cola();
-        ArbolBinarioBusqueda arbolEstadoCuentas = new ArbolBinarioBusqueda();
-        ArbolBinarioBusqueda arbolBloqueEstado = new ArbolBinarioBusqueda();
+        private readonly ILogger<TarjetaCreditoController> logger;
+        private readonly InterfaceProyecto interfaceProyecto;
+
+        public TarjetaCreditoController(ILogger<TarjetaCreditoController> logger, InterfaceProyecto interfaceProyecto)
+        {
+            this.logger = logger;
+            this.interfaceProyecto = interfaceProyecto;
+        }
 
         [HttpGet(Name = "tarjetaCredito")]
 
@@ -64,29 +68,27 @@ namespace ApiProyecto.Controllers
                 }
                 foreach (var tarjeta in tarjetas)
                 {
-                    listaTarjetasCredito.insertarCabezaLista(tarjeta);
-                    colaPagos.insertar(tarjeta);
-                    pilaLimiteCredito.insertar(tarjeta);
+                    interfaceProyecto.listaTarjetasCredito.insertarCabezaLista(tarjeta);
                 }
 
                 foreach(var estadoCuenta in estadosCuentas)
                 {
-                    arbolEstadoCuentas.insertar(estadoCuenta);
+                    interfaceProyecto.arbolEstadoCuentas.insertar(estadoCuenta);
                 }
 
                 foreach(var movimiento in movimientos)
                 {
-                    pilaMovimiento.insertar(movimiento);
+                    interfaceProyecto.pilaMovimiento.insertar(movimiento);
                 }
 
                 foreach(var notificacion in notificaciones)
                 {
-                    colaNotificaciones.insertar(notificacion);
+                    interfaceProyecto.colaNotificaciones.insertar(notificacion);
                 }
 
                 foreach(var bloqueo in bloqueosTemporales)
                 {
-                    arbolBloqueEstado.insertar(bloqueo);
+                    interfaceProyecto.arbolBloqueEstado.insertar(bloqueo);
                 }
 
                 return "Informacion cargada";
@@ -96,5 +98,119 @@ namespace ApiProyecto.Controllers
             }
         }
 
+        [HttpPost("almacenarSaldo")]
+        public string Post(TarjetaCredito body)
+        {
+            interfaceProyecto.listaTarjetasCredito.insertarCabezaLista(body);
+            return "Nuevo saldo almacenado";
+        }
+
+        [HttpGet("obtenerSaldo")]
+        public List<TarjetaCredito> GetObtenerSaldo()
+        {
+            List<TarjetaCredito> tarjetas = interfaceProyecto.listaTarjetasCredito.recorrer();
+            return tarjetas;
+        }
+
+        [HttpPost("almacenarPago")]
+        public string PostPago(Pago pago)
+        {
+            interfaceProyecto.colaPagos.insertar(pago);
+            interfaceProyecto.listaTarjetasCredito.buscarActualizarSaldoLista(pago, pago.montoFinal);
+            return "Pago encolado";
+        }
+
+        [HttpGet("obtenerPago")]
+        public List<Pago> GetObtenerPago()
+        {
+            return interfaceProyecto.colaPagos.recorrerPagos();
+        }
+
+        [HttpPost("almacenarEstadoCuenta")]
+        public string PostEstadoCuenta(EstadoCuenta estadoCuenta)
+        {
+            EstadoCuenta newEstado = estadoCuenta;
+            Random rnd = new Random();
+            newEstado.id = rnd.Next();
+            interfaceProyecto.arbolEstadoCuentas.insertar(estadoCuenta);
+            return "Estado de cuenta almacenado";
+        }
+
+        [HttpGet("obtenerEstadoCuenta")]
+        public List<EstadoCuenta> GetObtenerEstadoCuenta()
+        {
+            return interfaceProyecto.arbolEstadoCuentas.recorrerEstadoCuenta(interfaceProyecto.arbolEstadoCuentas.raizArbol(), new List<EstadoCuenta>());
+        }
+
+        [HttpPost("almacenarMovimiento")]
+        public string PostMovimiento(Movimiento movimiento)
+        {
+            interfaceProyecto.pilaMovimiento.insertar(movimiento);
+            return "Movimiento almacenado";
+        }
+
+        [HttpGet("obtenerMovimiento")]
+        public List<Movimiento> GetMovimientos()
+        {
+            return interfaceProyecto.pilaMovimiento.recorrer();
+        }
+
+        [HttpPost("almacenarNotificacion")]
+        public string PostNotificacion(Notificacion notificacion)
+        {
+            interfaceProyecto.colaNotificaciones.insertar(notificacion);
+            return "Notificacion almacenado";
+        }
+
+        [HttpGet("obtenerNotificacion")]
+        public List<Notificacion> GetNotificacion()
+        {
+            return interfaceProyecto.colaNotificaciones.recorrerNotificaciones();
+        }
+
+        [HttpPost("almacenarCambioPin")]
+        public string PostCambioPin(CambioPin cambioPin)
+        {
+            interfaceProyecto.listaCambioPin.insertarCabezaLista(cambioPin);
+            interfaceProyecto.listaTarjetasCredito.buscarActualizarPinLista(cambioPin, cambioPin.nuevoPin);
+            return "Cambio de pin procesado";
+        }
+
+        [HttpGet("obtenerCambioPin")]
+        public List<CambioPin> GetCambioPin()
+        {
+            return interfaceProyecto.listaCambioPin.recorrerPin();
+        }
+
+        [HttpPost("almacenarBloqueoTemporal")]
+        public string PostBloqueoTemporal(BloqueoTemporal bloqueo)
+        {
+            BloqueoTemporal newBloqueo = bloqueo;
+            Random rnd = new Random();
+            newBloqueo.id = rnd.Next();
+            interfaceProyecto.arbolBloqueEstado.insertar(newBloqueo);
+            return "Bloqueo Temporal almacenado";
+        }
+
+        [HttpGet("obtenerBloqueoTemporal")]
+        public List<BloqueoTemporal> GetBLoqueoTempora()
+        {
+            return interfaceProyecto.arbolBloqueEstado.recorrerBloqueoTemporal(interfaceProyecto.arbolBloqueEstado.raizArbol(), new List<BloqueoTemporal>());
+        }
+
+        [HttpPost("almacenarSolicitudAumentoLimiteCredito")]
+        public string PostSolicitudAumentoLimiteCredito(LimiteCredito limite)
+        {
+            interfaceProyecto.pilaLimiteCredito.insertar(limite);
+            interfaceProyecto.listaTarjetasCredito.buscarActualizarLimiteCreditoLista(limite, limite.limiteCredito);
+            return "Solicitud de aumento de limite de credito almacenada";
+        }
+
+        [HttpGet("obtenerLimiteCredito")]
+        public List<LimiteCredito> GetLimiteCredito()
+        {
+            return interfaceProyecto.pilaLimiteCredito.recorrerLimiteCredito();
+        }
     }
 }
+ 

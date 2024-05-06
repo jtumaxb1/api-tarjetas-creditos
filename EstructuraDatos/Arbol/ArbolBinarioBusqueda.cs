@@ -48,6 +48,40 @@ namespace EstructuraDatos.Arbol
             }
         }
 
+        public List<EstadoCuenta> recorrerEstadoCuenta(Nodo r, List<EstadoCuenta> lista)
+        {
+            if (r != null)
+            {
+                lista.Add((EstadoCuenta)r.valorNodo());
+                if (r.subArbolIzdo() != null)
+                {
+                    recorrerEstadoCuenta(r.subArbolIzdo(), lista);
+                }
+                if (r.subArbolDcho() != null)
+                {
+                    recorrerEstadoCuenta(r.subArbolDcho(), lista);
+                }
+            }
+            return lista;
+        }
+
+        public List<BloqueoTemporal> recorrerBloqueoTemporal(Nodo r, List<BloqueoTemporal> lista)
+        {
+            if (r != null)
+            {
+                lista.Add((BloqueoTemporal)r.valorNodo());
+                if (r.subArbolIzdo() != null)
+                {
+                    recorrerBloqueoTemporal(r.subArbolIzdo(), lista);
+                }
+                if (r.subArbolDcho() != null)
+                {
+                    recorrerBloqueoTemporal(r.subArbolDcho(), lista);
+                }
+            }
+            return lista;
+        }
+
         public Object buscarEstadoCuenta(string dato)
         {
             if (raiz == null)

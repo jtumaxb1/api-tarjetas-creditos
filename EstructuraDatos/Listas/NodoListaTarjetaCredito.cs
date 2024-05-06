@@ -9,10 +9,10 @@ namespace EstructuraDatos.Listas
 {
     public class NodoListaTarjetaCredito
     {
-        public TarjetaCredito dato;
+        public Object dato;
         public NodoListaTarjetaCredito enlance;
 
-        public NodoListaTarjetaCredito(TarjetaCredito dato)
+        public NodoListaTarjetaCredito(Object dato)
         {
             this.dato = dato;
             this.enlance = null;
