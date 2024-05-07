@@ -108,8 +108,7 @@ namespace ApiProyecto.Controllers
         [HttpGet("obtenerSaldo")]
         public List<TarjetaCredito> GetObtenerSaldo()
         {
-            List<TarjetaCredito> tarjetas = interfaceProyecto.listaTarjetasCredito.recorrer();
-            return tarjetas;
+            return interfaceProyecto.listaTarjetasCredito.recorrer();
         }
 
         [HttpPost("almacenarPago")]
@@ -132,7 +131,7 @@ namespace ApiProyecto.Controllers
             EstadoCuenta newEstado = estadoCuenta;
             Random rnd = new Random();
             newEstado.id = rnd.Next();
-            interfaceProyecto.arbolEstadoCuentas.insertar(estadoCuenta);
+            interfaceProyecto.arbolEstadoCuentas.insertar(newEstado);
             return "Estado de cuenta almacenado";
         }
 
